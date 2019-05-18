@@ -1,12 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
-    
+<div class="panel panel-defult">
 
-                    Welcome to Admin Area!
-            
+  <div class="panel-body">
      
- 
+     <div class="text text-center">
+     
+     <h2>Welome to Home</h2>
+     </div>
+  
+  </div>
+
 </div>
 @endsection

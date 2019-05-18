@@ -18,8 +18,22 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('styles')
+    
 </head>
 <body>
+@if(Session::has('success'))
+  <div class="alert alert-primary" role="alert">
+  {{ Session::get("success") }}
+  </div>
+
+@endif
+@if(Session::has('info'))
+  <div class="alert alert-primary" role="alert">
+  {{ Session::get("info") }}
+  </div>
+
+@endif
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
@@ -79,39 +93,89 @@
               
              <div class="col-lg-4">
 
-               <ul class="list-group">
+                    <ul class="list-group">
 
-                <li class="list-group-item">
-                 <a href="{{route('home')}}">Home</a>
-                </li>
+                            <li class="list-group-item">
+                            <a href="{{route('home')}}">Home</a>
+                            </li>
 
-             <li class="list-group-item">
-             <a href="{{route ('posts.create')}}">Create New Post</a>
-             </li>
-              </ul>
+                            <li class="list-group-item">
+                            <a href="{{route ('posts.create')}}">Create New Post</a>
+                            </li>
+
+                            <li class="list-group-item">
+                            <a href="{{route ('categories.create')}}">Create New category</a>
+                            </li>
+
+                             <li class="list-group-item">
+                            <a href="{{route ('tags.create')}}">Create New Tags</a>
+                            </li>
+
+                            <li class="list-group-item">
+                            <a href="{{route ('categories.index')}}">Show Categories</a>
+                            </li>
+
+                            <li class="list-group-item">
+                            <a href="{{route ('posts.index')}}">Show Posts</a>
+                            </li>
+
+                            <li class="list-group-item">
+                            <a href="">Show Trashed</a>
+                            </li>
+
+                            
+                            <li class="list-group-item">
+                            <a href="{{route ('tags.index')}}">Show Tags</a>
+                            </li>
+
+                            @if(Auth::user()->admin)
+
+                               <li class="list-group-item">
+                                <a href="{{route ('users.index')}}">Show Users</a>
+                               </li>
+                                <li class="list-group-item">
+                                <a href="{{route ('users.create')}}">Add new User</a>
+                                </li>
+
+                            @endif
+
+                            <li class="list-group-item">
+                            <a href="{{route ('profile.index')}}">My Profiles</a>
+                            </li>
+                          @if(Auth::user()->admin)
+
+                             <li class="list-group-item">
+                                <a href="{{route ('settings')}}">Settings</a>
+                            </li>
+
+                          @endif
+                            
+
+                    </ul>
 
              </div>
              @endif
             
 
-             <div class="col lg-8">
-             
-
-             @yield('content')
+                    <div class="col lg-8">
+                    
+                    @yield('content')
+                    </div>
              </div>
-             </div>
-             </div>
+           </div>
          
 
 
 
-         </div>
-                </div>
-            </div>
-
+        </div>
+        </div>
+        </div>
         
            
         
     </div>
+
+    @yield('scripts')
+
 </body>
 </html>
